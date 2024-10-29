@@ -1,0 +1,307 @@
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.happy {
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diyas {
+  display: flex;
+  align-items: center;
+  gap: 200px;
+}
+.diya {
+  height: 150px;
+  width: 300px;
+  background-color: #fdcf0f;
+  border-radius: 0 0 150px 150px;
+  position: relative;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: -450px;
+  overflow: hidden;
+}
+.inside {
+  width: 301px;
+  height: 40px;
+  background-color: #fd500a;
+  border-radius: 50%;
+  position: relative;
+  margin-left: -500px;
+  bottom: -370px;
+}
+.shadow {
+  height: 60px;
+  width: 320px;
+  position: absolute;
+  bottom: 30px;
+  border-radius: 50%;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+.flame {
+  height: 170px;
+  width: 170px;
+  background-color: #fdf1c2;
+  border-radius: 160px 0;
+  transform: rotate(-45deg);
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 36px;
+  animation: scale-up 2s infinite;
+}
+@keyframes scale-up {
+  50% {
+    transform: rotate(-45deg) scale(1.05);
+    bottom: 42px;
+  }
+}
+.flame:after {
+  content: "";
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  background-color: #f4c631;
+  border-radius: 120px 0;
+  position: absolute;
+  bottom: 0;
+}
+.light {
+  height: 330px;
+  width: 330px;
+  background-color: rgba(253, 241, 194, 0.2);
+  border-radius: 50%;
+  position: absolute;
+  left: -15px;
+  bottom: 0;
+}
+.light:before,
+.light:after {
+  content: "";
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  background-color: rgba(253, 241, 194, 0.3);
+  border-radius: 50%;
+  animation: shine 5s linear infinite;
+}
+@keyframes shine {
+  50% {
+    transform: scale(0.7);
+    opacity: 0.2;
+  }
+}
+.light:before {
+  bottom: 30px;
+  right: 10px;
+}
+.light:after {
+  top: 50px;
+  left: 10px;
+  animation-delay: 1s;
+}
+.line-1,
+.line-2 {
+  position: absolute;
+  height: 60px;
+  width: 320px;
+  border: none;
+  border-bottom: 8px solid #ffffff;
+  border-radius: 50%;
+  left: -10px;
+}
+.line-2 {
+  top: 60px;
+}
+.dots {
+  height: 60px;
+  width: 320px;
+  border: none;
+  border-bottom: 10px dotted #fd500a;
+  position: absolute;
+  border-radius: 50%;
+  top: 30px;
+  left: -10px;
+}
+.heading {
+  animation-name: slide-up;
+  animation-duration: 6s;
+  animation-fill-mode: forwards;
+}
+h1 {
+  color: white;
+  font-size: 56px;
+  font-family: "Dosis", sans-serif;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Positioning for the fireworks animation */
+.fireworksDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 1);
+}
+.container {
+  position: relative;
+  z-index: 1;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+
+:root {
+  --primary-light-color: #e74c3c;
+  --secondary-light-color: yellow;
+  --third-light-color: white;
+  --cable-color: white;
+  --background: black;
+}
+
+ul {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 1300px;
+  margin-top: 10px;
+}
+
+ul li {
+  position: relative;
+  width: 20px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 150px / 300px;
+  list-style-type: none;
+}
+
+ul li::after {
+  content: "";
+  position: absolute;
+  background-color: #2c3e50;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  left: 0;
+  top: -10px;
+  z-index: 1;
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  background: none;
+  border-bottom: solid 1px var(--cable-color);
+  width: 145px;
+  height: 40px;
+  border-radius: 50%;
+  left: -105px;
+  top: -30px;
+}
+
+ul li:nth-child(even) {
+  background: var(--primary-light-color);
+  animation: blink1 1.2s infinite;
+}
+
+ul li:nth-child(odd) {
+  background: var(--secondary-light-color);
+  animation: blink2 1.2s infinite;
+}
+
+ul li:nth-child(3n + 0) {
+  background: var(--third-light-color);
+  animation: blink3 1.2s infinite;
+}
+
+@keyframes blink1 {
+  50% {
+    box-shadow: 0px 5px 25px var(--primary-light-color);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+@keyframes blink2 {
+  50% {
+    box-shadow: 0px 5px 25px var(--secondary-light-color);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+@keyframes blink3 {
+  50% {
+    box-shadow: 0px 5px 25px var(--third-light-color);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+#startFireworks {
+  background-color: #ff8c00;
+  color: white;
+  font-family: "Audiowide", sans-serif;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 40px;
+}
+
+#startFireworks:hover {
+  background-color: #e67300;
+  transform: translateY(-3px);
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+#startFireworks:active {
+  transform: translateY(2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}

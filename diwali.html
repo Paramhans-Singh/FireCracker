@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diwali Celebration</title>
+    <link rel="stylesheet" href="diwali.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <div class="fireworksDiv"></div>
+    <div class="container">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="center-container">
+        <div class="diyas">
+          <div class="shadow"></div>
+          <div class="diya">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="dots"></div>
+          </div>
+          <div class="inside">
+            <div class="light"></div>
+            <div class="flame"></div>
+          </div>
+          <div class="shadow"></div>
+          <div class="diya">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="dots"></div>
+          </div>
+          <div class="inside">
+            <div class="light"></div>
+            <div class="flame"></div>
+          </div>
+        </div>
+      </div>
+      <div class="heading">
+        <h1 align="center" class="happy">Happy Diwali</h1>
+      </div>
+
+      <div align="center">
+        <button id="startFireworks">Start Fireworks</button>
+      </div>
+    </div>
+
+    <audio id="diwaliSong" src="song.mp3" preload="auto"></audio>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.js"></script>
+  <script>
+    const fireDiv = document.querySelector(".fireworksDiv");
+    const fireworks = new Fireworks(fireDiv, {
+      delay: { min: 1, max: 5 },
+      trace: 1,
+      speed: 0.9,
+      particles: 50,
+      sound: {
+        enable: false,
+      },
+    });
+
+    const context = new AudioContext();
+    const diwaliSong = document.getElementById("diwaliSong");
+
+    document.getElementById("startFireworks").addEventListener("click", () => {
+      context.resume().then(() => {
+        console.log("Playback resumed successfully");
+        fireworks.start(); // Start fireworks animation
+        diwaliSong.play(); // Play the Diwali song
+      });
+    });
+  </script>
+</html>
